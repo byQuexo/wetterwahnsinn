@@ -1,0 +1,31 @@
+{
+     "latitude" : 50.9384,
+     "longitude" : 6.9599,
+     "resolvedAddress" : "Köln, Deutschland",
+     "address" : "Köln",
+     "timezone" : "Europe/Berlin",
+     "tzoffset" : 1, 
+     "description":"Kühl mit einer Chance auf Regen am Freitag.", 
+     "days" : [{
+         "datetime":"2023-09-22",
+         "datetimeEpoch":1679887200,
+         "temp" : 15.3,
+         "feelslike" : 15.3,
+         "stations" : {
+         },
+         "source" : "obs",
+         "hours" : [{  
+             "datetime" : "01:00:00"
+         }]
+     }],
+     "alerts" : [{
+             "event" : "Starkregenwarnung",
+             "description" : "..."
+         }
+     ],
+     "currentConditions" : {
+         "datetime" : "2023-09-22T22:48:35",
+         "datetimeEpoch" : 167988291500,
+         "temp" : 14.9
+     }
+}
