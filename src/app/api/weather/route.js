@@ -1,6 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+//get the this folder path
+const __dirname = path.resolve();
+
+
 export async function GET(req, res) {
     const url = new URL(req.url);
     const city = url.searchParams.get("city");
@@ -9,7 +13,7 @@ export async function GET(req, res) {
     city.toLowerCase();
     const sendData = async () => {
         try {
-            const filePath = path.join(__dirname, `../../../../../weatherData/${city.toLowerCase()}.json`);
+            const filePath = path.join(__dirname, `./weatherData/${city.toLowerCase()}.json`);
             console.log(filePath); // Log the file path
             const fileData = await fs.readFile(filePath, 'utf8');
             console.log(fileData); // Log the file content
