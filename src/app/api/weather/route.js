@@ -1,10 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-
-//get the this folder path
 const __dirname = path.resolve();
-
-
 export async function GET(req, res) {
     const url = new URL(req.url);
     const city = url.searchParams.get("city");
@@ -14,19 +10,18 @@ export async function GET(req, res) {
     const sendData = async () => {
         try {
             const filePath = path.join(__dirname, `./weatherData/${city.toLowerCase()}.json`);
-            console.log(filePath); // Log the file path
+            console.log(filePath);
             const fileData = await fs.readFile(filePath, 'utf8');
-            console.log(fileData); // Log the file content
+            console.log(fileData);
             return JSON.parse(fileData);
         }catch(err){
             console.log(err);
-            return err; // Return the error if one occurs
+            return err; 
         }
     }
 
     const data = await sendData();
     if (data instanceof Error) {
-        // If sendData returned an error, send a response with the error message
         return Response.json({ error: data.message });
     } else {
         return Response.json(data);
