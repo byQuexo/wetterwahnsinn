@@ -14,7 +14,7 @@ export default function Navbar() {
                         <div><FontAwesomeIcon icon={faHome} size="lg" height={20} onClick={() => {
                             window.location.href = "/";
                         }}/></div>
-                        <div><FontAwesomeIcon icon={faChartLine} marginLeft={20} size="lg" height={20} onClick={() => {
+                        <div><FontAwesomeIcon icon={faChartLine} size="lg" height={20} onClick={() => {
                             window.location.href = "/stats";
                         }}/></div>
                         <div><FontAwesomeIcon icon={faChartLine} size="lg" height={20}/></div>

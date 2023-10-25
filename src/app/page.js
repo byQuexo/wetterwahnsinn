@@ -7,7 +7,7 @@ import Navbar from "../app/Components/navbar";
 export default function Home() {
   return (
     <>
-      <Navbar/>
+      <Navbar fallback="Loading.."/>
     </> 
   );
 }
