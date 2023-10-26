@@ -24,4 +24,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    overflow: hidden;
+    position: relative;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    
 }
