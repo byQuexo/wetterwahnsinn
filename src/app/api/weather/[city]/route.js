@@ -1,31 +1,14 @@
-//import fs from 'fs/promises';
-//import path from 'path';
-//const __dirname = path.resolve();
+import fs from 'fs';
+import path from 'path';
 
-export async function GET(request) {
-    request.GET = request.query;
-    return new Response(`Hello ${city}!`);
+export async function GET(req, { params }) {
+    const city = params.city;
+    const dir = path.join(process.cwd(), 'src', 'app', 'weatherData', city.toLowerCase() + '.json');
+    const fileContents = fs.readFileSync(dir, 'utf8');
+    const weatherData = JSON.parse(fileContents);
+    return new Response(JSON.stringify(weatherData), {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 }
-
-
-// const { city } = req.query;
-//     const sendData = async () => {
-
-//         try {
-//             const filePath = path.join(__dirname, `./weatherData/${city.toLowerCase()}.json`);
-//             console.log(filePath);
-//             const fileData = await fs.readFile(filePath, 'utf8');
-//             console.log(fileData);
-//             return JSON.parse(fileData);
-//         }catch(err){
-//             console.log(err);
-//             return err; 
-//         }
-//     }
-
-//     const data = await sendData();
-//     if (data instanceof Error) {
-//         return Response.json({ error: data.message });
-//     } else {
-//         return Response.json(data);
-//     }
