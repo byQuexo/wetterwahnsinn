@@ -1,7 +1,12 @@
 "use strict";
 import React, { useEffect, useState } from "react";
+import { getWeather } from "@functions/index.js";
 
 export default function WeatherPage() {
+    //
+    const data = getWeather("London");
+    const [weather, setWeather] = useState(null);
+    const [city, setCity] = useState("");
     return (
         <>
             <div className="flex h-full gap-4 min-w-min">
