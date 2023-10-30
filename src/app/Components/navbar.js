@@ -39,7 +39,7 @@ export default function Navbar() {
                             }} style={{ marginBottom: "2rem"}}/></div>
                     </div>
                 </nav>
-            </div>
+        </div>
         </>
     );
 }

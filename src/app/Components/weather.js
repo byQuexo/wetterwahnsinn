@@ -4,7 +4,7 @@ import { getWeather } from "@functions/index.js";
 
 export default function WeatherPage() {
     //
-    const data = getWeather("London");
+    const data = getWeather("köln");
     const [weather, setWeather] = useState(null);
     const [city, setCity] = useState("");
     return (
