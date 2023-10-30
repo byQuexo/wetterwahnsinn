@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 export default function searchHistory() {
     return (
         <>
-        <div className="flex h-35 gap-4 min-w-min">
+        <div className="flex h-35 w-56 gap-4 min-w-min">
             <div className="flex-1 flex flex-col min-w-min">
                 <div className="flex h-20 min-w-min">
                     <h1>History</h1>
