@@ -10,7 +10,7 @@ export default function Navbar() {
     const [visBar, setVisbar] = useState("visible");
     return (
         <>
-        <div className="grid w-20 h-screen border-gray-100 dark:border-gray-700">
+        <div className="grid w-12 h-screen border-gray-100 dark:border-gray-700 justify-items-center">
             <div style={{ visibility: visBar, width: visBar === "hidden" ? 0 : "auto", height: visability === "hidden" ? 0 : "auto" }}>
                 <FontAwesomeIcon icon={faBars} size="lg" height={20} style={{ marginLeft: "1rem", marginTop: "1rem"}} onClick={() => {
                     setVisability(visability === "hidden" ? "visible" : "hidden");

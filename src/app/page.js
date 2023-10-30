@@ -24,7 +24,7 @@ export default function Home() {
             />
         </div>
         <div className="flex-1 gap-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5" style={{ position: "absolute", overflowY: "scroll" }}> 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 w-full" style={{ position: "absolute", overflowY: "scroll" }}> 
               <SearchHistory />
               <Weather/>
             </div>
