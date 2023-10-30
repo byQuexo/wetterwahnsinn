@@ -2,27 +2,39 @@
 import React, { useEffect, useState } from "react";
 import { getWeather } from "@functions/index.js";
 
-export default function WeatherPage() {
-    //
-    const data = getWeather("London");
-    const [weather, setWeather] = useState(null);
+export default function WeatherPage({ location }) {
+    const data = getWeather(location);
+    console.log(data);
+    data.then((res) => {
+
+        setCity(res.address);
+        setTemp(res.currentConditions.temp);
+    });
+
+    const [weather, setWeather] = useState("night");
     const [city, setCity] = useState("");
+    const [temp, setTemp] = useState("");
     return (
         <>
-            <div className="flex h-full gap-4 min-w-min">
-                <a className="flex flex-col bg-grey-900 shadow-sm rounded-xl hover:shadow-lg transition dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]" href="#">
-                    <img className="w-full h-auto rounded-t-xl" src="../docs/assets/img/500x300/img1.jpg" alt="Image Description" />
-                    <div className="p-4 md:p-5">
-                        <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-                        Card title
-                        </h3>
-                        <p className="mt-1 text-gray-800 dark:text-gray-400">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                        </p>
+            <div className="flex h-screen w-fill gap-4 min-w-min">
+                <div className="flex-1 h-auto w-full rounded">
+                    <div className="flex flex-rows-3 h-auto w-auto">
+                        <div className="flex flex-cols-2 h-auto w-fill gap-12" >
+                            <div className="flow grid-rows-2 md:grid-flow-col h-auto w-auto">
+                                <h1 className="h-auto">Standort</h1>
+                                <p className="h-auto">{ city }</p>
+                                <p className="h-auto">{weather}</p>
+                                <div className="rounded-lg h-auto w-16 justify-items-center" style={{ backgroundColor: "#282828", marginTop: "6rem"}}>
+                                    <p style={{marginLeft: "0.25rem"}}>{ temp }&#x2103;</p>
+                                </div>
+                            </div>
+                            <div className="grid h-auto w-full ">
+                                <img src={`/assets/${weather}.svg`} alt="Avatar" className="rounded-full h-44" />
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
-            
         </>
     );
 }
