@@ -2,10 +2,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import "./globals.css";
-import Navbar from "../app/Components/navbar";
-import SearchBar from './Components/searchbar';
-import WeatherPage from './Components/weather';
-import SearchHistory from './Components/searchHistory';
+import { Navbar, SearchBar, SearchHistory, Weather } from './Components';
 
 export default function Home() {
   return (
@@ -19,7 +16,7 @@ export default function Home() {
         <div className="flex-1 gap-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5" style={{ position: "absolute", overflowY: "scroll" }}> 
               <SearchHistory/>
-              <WeatherPage/>
+              <Weather/>
             </div>
         </div>
       </div>
