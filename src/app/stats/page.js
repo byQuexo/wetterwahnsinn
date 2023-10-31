@@ -36,8 +36,8 @@ export default function StatsPage() {
           width={600} 
           height={300} 
           data={data} 
-          margin={{ top: 5, right: 20, bottom: 5, left: 0 }} 
-          style={{ backgroundColor: "#f0f0f0" }}>
+          margin={{ top: 15, right: 50, bottom: 5, left: 0 }} 
+          style={{ backgroundColor: "#f0f0f0", padding: "8px", borderRadius: "12px" }}>
             <Line type="monotone" dataKey="Wärme" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="name" />
