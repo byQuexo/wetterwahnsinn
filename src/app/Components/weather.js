@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { getWeather } from "@functions/index.js";
 
 export default function WeatherPage({ location }) {
-    const data = getWeather(location);
-    console.log(data);
-    data.then((res) => {
+    // const data = getWeather(location);
+    // console.log(data);
+    // data.then((res) => {
 
-        setCity(res.address);
-        setTemp(res.currentConditions.temp);
-    });
+    //     setCity(res.address);
+    //     setTemp(res.currentConditions.temp);
+    // });
 
     const [weather, setWeather] = useState("night");
     const [city, setCity] = useState("");

@@ -1,21 +1,53 @@
 "use client";
-import React from "react"
-import {Navbar}  from "../Components"
+import React from "react";
+import {Navbar}  from "../Components";
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+
 export default function StatsPage() {
+  const data = [{name: '2023', Wärme: 33, pv: 2400, amt: 2400}, 
+  {name: '2022', Wärme: -12, pv: 2400, amt: 2400}, 
+  {name: '2021', Wärme: 10, pv: 2400, amt: 2400}, 
+  {name: '2021', Wärme: 15, pv: 2400, amt: 2400}, 
+  {name: '2021', Wärme: 23, pv: 2400, amt: 2400}];
+
   return (
     <>
-      <Navbar />
-      <h1>Stats der letzten 100 Jahre</h1>
-    
-    <LineChart width={500} height={300} data={data}>
-    <XAxis dataKey="name"/>
-    <YAxis/>
-    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-  </LineChart>
-
-</>
-  );
-  
+  <div className="flex h-screen gap-12 min-w-min">
+  <Navbar/>
+  <div className="flex-1 flex flex-col min-w-min gap-4">
+    <div className="flex h-20 min-w-min">
+    <input
+            type='text'
+            placeholder='Search'
+            className='grid h-10 w-4/5 px-5 pr-16 rounded-lg text-sm'
+            style={{ backgroundColor: "#282828", marginTop: "0.5rem" }}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    e.target.value = "";
+                    setLoc(e.target.value);
+                }
+            }}
+        />
+    </div>
+    <div className="flex-1 gap-2" >
+        <div className="h-4/5 w-5/6" style={{ overflowY: "scroll" }} > 
+          <h1>Stats der letzten 100 Jahre</h1>
+          <LineChart 
+          width={600} 
+          height={300} 
+          data={data} 
+          margin={{ top: 5, right: 20, bottom: 5, left: 0 }} 
+          style={{ backgroundColor: "#f0f0f0" }}>
+            <Line type="monotone" dataKey="Wärme" stroke="#8884d8" />
+            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+          </LineChart>
+        </div>
+    </div>
+</div>
+</div>
+    </>
+ );
 }
