@@ -5,7 +5,7 @@ import "./globals.css";
 import { Navbar,SearchHistory, Weather } from './Components';
 
 export default function Home() {
-  const [loc, setLoc] = useState("köln");
+  const [loc, setLoc] = useState("cologne");
   return (
     <>
     <div className="flex h-screen gap-12 min-w-min">
