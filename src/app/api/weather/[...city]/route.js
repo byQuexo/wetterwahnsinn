@@ -8,7 +8,8 @@ export async function GET(req, { params }) {
     const weatherData = JSON.parse(fileContents);
     return new Response(JSON.stringify(weatherData), {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Allow-Control-Allow-Origin': 'localhost:3000'
         }
     });
 }
