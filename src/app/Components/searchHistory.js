@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-export default function searchHistory() {
+export default function searchHistory({ history }) {
     return (
         <>
         <div className="flex h-35 w-56 gap-4 min-w-min">
@@ -9,8 +9,15 @@ export default function searchHistory() {
                 <div className="flex h-20 min-w-min">
                     <h1>History</h1>
                 </div>
-                <div className="flex-1">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full md" style={{ overflowY: "scroll" }}> 
+                <div className="flex-1 h-24" style={{ overflowY: "scroll", overflow: "scroll", overflowX: "hidden" }}>
+                    <div className="grid grid-cols-1 gap-1 h-fill" style={{ overflowY: "scroll", overflow: "scroll", overflowX: "hidden" }}> 
+                        {history.map((item, index) => {
+                            return (
+                                <div className="flex h-fill min-w-min" key={index}>
+                                    <h1>{item}</h1>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
