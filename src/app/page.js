@@ -6,6 +6,7 @@ import { Navbar,SearchHistory, Weather } from './Components';
 
 export default function Home() {
   const [loc, setLoc] = useState("cologne");
+  const [history, setHistory] = useState(["cologne"]); // [ { location: "cologne", date: "2021-10-10" }
   return (
     <>
     <div className="flex h-screen gap-12 min-w-min">
@@ -19,15 +20,17 @@ export default function Home() {
                 style={{ backgroundColor: "#282828", marginTop: "0.5rem" }}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                        e.target.value = "";
                         setLoc(e.target.value);
+                        setHistory([...history, e.target.value]);
+                        console.log(history);
+                        e.target.value = "";
                     }
                 }}
             />
         </div>
         <div className="flex-1 gap-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 w-5/6" style={{ position: "absolute", overflowY: "scroll" }}> 
-              <SearchHistory />
+              <SearchHistory history={history}/>
               <Weather location={loc}/>
             </div>
         </div>
