@@ -31,7 +31,7 @@ export default function StatsPage() {
     </div>
     <div className="flex-1 gap-2" >
         <div className="h-4/5 w-5/6" style={{ overflowY: "scroll" }} > 
-          <h1>Stats der letzten 100 Jahre</h1>
+          <h1>Stats der letzten 100 Jahre: Deutschland</h1>
           <LineChart 
           width={1150} 
           height={500} 
