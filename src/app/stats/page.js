@@ -2,13 +2,15 @@
 import React from "react";
 import {Navbar}  from "../Components";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { getHistoryWeather } from "../Functions";
 
 export default function StatsPage() {
-  const data = [{name: '2023', Wärme: 33, pv: 2400, amt: 2400}, 
-  {name: '2022', Wärme: -12, pv: 2400, amt: 2400}, 
+  const dataW = getHistoryWeather();
+  const data = [{name: '2019', Wärme: 33, pv: 2400, amt: 2400}, 
+  {name: '2020', Wärme: -12, pv: 2400, amt: 2400}, 
   {name: '2021', Wärme: 10, pv: 2400, amt: 2400}, 
-  {name: '2021', Wärme: 15, pv: 2400, amt: 2400}, 
-  {name: '2021', Wärme: 23, pv: 2400, amt: 2400}];
+  {name: '2022', Wärme: 15, pv: 2400, amt: 2400}, 
+  {name: '2023', Wärme: 23, pv: 2400, amt: 2400}];
 
   return (
     <>
