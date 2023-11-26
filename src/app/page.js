@@ -3,8 +3,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./globals.css";
 import { Navbar, SearchHistory, Weather } from './Components';
-
-const history = ["berlin", "München", "bergisch", "mecklenburg", "hamburg", "hessen", "saarland", "sachsen", "sachsen-anhalt", "schleswig-holstein", "thüringen", "niedersachsen", "nordrhein-westfalen", "baden-württemberg", "bremen", "brandenburg", "bayern", "berlin", "München", "bergisch", "mecklenburg", "hamburg", "hessen", "saarland", "sachsen", "sachsen-anhalt", "schleswig-holstein", "thüringen", "niedersachsen", "nordrhein-westfalen", "baden-württemberg", "bremen", "brandenburg", "bayern"];
+import { handleSearchHistory, getSearchHistory } from "./Functions";
+//make a global array for the search history
+var history = ["Köln", "Bonn"];
 var loc = "cologne";
 
 function ComboboxWithAutocomplete() {
@@ -41,13 +42,12 @@ function ComboboxWithAutocomplete() {
     type="text"
     className="grid h-10 w-4/5 px-5 pr-16 rounded-lg text-sm"
     onChange={(e) => onChangeHandler(e.target.value)}
-    onClick={() => setSuggestions([])}
     value={value}
     style={{ backgroundColor: "#282828", marginTop: "0.5rem" }}
     placeholder="Search"
     onKeyDown={(e) => {
       if (e.key === "Enter") {
-        if(value != null && value != ""){
+        if(value != null && value != "" && staedte.includes(value)){
           handleSearchHistory(value);
           loc = value;
           e.target.value = "";
@@ -74,12 +74,7 @@ function ComboboxWithAutocomplete() {
 }
 
 export default function Home() {
-  const [search, setSearch] = useState(history);
-  useEffect(() => {
-    setSearch(history);
-  }, [history]);
-
-
+  const [search, setSearch] = useState([]);
   return (
     <>
     <div className="relative">
@@ -89,8 +84,8 @@ export default function Home() {
         <div className="flex h-20 min-w-min">
           <ComboboxWithAutocomplete />
         </div>
-        <div className="flex-1 gap-2 ">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 w-5/6" style={{ position: "absolute", overflowY: "scroll" }}> 
+        <div className="flex-1 gap-2 w-fit ">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 h-4/5 w-fit" style={{ position: "absolute", overflowY: "scroll" }}> 
               <SearchHistory history={history}/>
               <Weather location={loc}/>
           </div>

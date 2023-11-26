@@ -32,6 +32,13 @@ export async function getHistoryWeather() {
 
 
 
-export function handleSearchHistory() {
-    
+export var history = []
+
+export function handleSearchHistory(item) {
+    history.push(item);
+    return history;
+}
+
+export function getSearchHistory() {
+    return history;
 }
