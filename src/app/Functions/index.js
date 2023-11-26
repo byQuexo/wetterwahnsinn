@@ -29,3 +29,9 @@ export async function getHistoryWeather() {
 
     return await res;
 }
+
+
+
+export function handleSearchHistory() {
+    
+}

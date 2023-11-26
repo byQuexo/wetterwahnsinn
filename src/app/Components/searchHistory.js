@@ -1,41 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
+import "../globals.css";
+import { HistoryItem } from ".";
 
 export default function searchHistory({ history }) {
   return (
-    <>
-      <div className="flex h-35 w-56 gap-4 min-w-min">
-        <div className="flex-1 flex flex-col min-w-min">
-          <div className="flex h-auto w-auto">
-            <h1>History</h1>
-          </div>
-          <div
-            className="flex-1 h-24"
-            style={{
-              overflowY: "scroll",
-              overflow: "scroll",
-              overflowX: "hidden",
-            }}
-          >
-            <div
-              className="grid grid-cols-1 gap-1 h-fill"
-              style={{
-                overflowY: "scroll",
-                overflow: "scroll",
-                overflowX: "hidden",
-              }}
-            >
-              {history.map((item, index) => {
-                return (
-                  <div className="flex h-fill min-w-min" key={index}>
-                    <h1>{item}</h1>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col gap-2 w-fill min-w-min h-48">
+      <h1 className="text-2xl font-bold">Search History</h1>
+      <div className="flex flex-col gap-2 overflow-y-scroll">
+        {history.map((item, index) => (
+          <HistoryItem key={index} name={item} />
+       ))}
+       </div>
+    </div>
   );
 }

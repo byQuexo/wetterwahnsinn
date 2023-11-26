@@ -24,11 +24,11 @@ export default function WeatherPage({ location }) {
                     <div className="flex flex-rows-3 h-auto w-auto">
                         <div className="flex flex-cols-2 h-auto w-fill gap-12" >
                             <div className="flow grid-rows-2 md:grid-flow-col h-auto w-auto">
-                                <h1 className="h-auto">Standort</h1>
-                                <p className="h-auto">{ city }</p>
-                                <p className="h-auto">{weather}</p>
+                                <h1 className="h-auto font-bold">Standort</h1>
+                                <p className="h-auto font-bold">{ city }</p>
+                                <p className="h-auto font-bold">{weather}</p>
                                 <div className="rounded-lg h-auto w-16 justify-items-center" style={{ backgroundColor: "#282828", marginTop: "6rem"}}>
-                                    <p style={{marginLeft: "0.25rem"}}>{ temp }&#x2103;</p>
+                                    <p style={{marginLeft: "0.25rem"}} className="font-bold">{ temp }&#x2103;</p>
                                 </div>
                             </div>
                             <div className="grid h-auto w-full ">
