@@ -3,7 +3,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./globals.css";
 import { Navbar, SearchHistory, Weather } from './Components';
-import { handleSearchHistory, getSearchHistory } from "./Functions";
 //make a global array for the search history
 
 function ComboboxWithAutocomplete({onSearch, onLocation}) {

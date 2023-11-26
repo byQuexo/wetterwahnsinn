@@ -21,7 +21,7 @@ export default function WeatherPage({ location }) {
     const [temp, setTemp] = useState("");
     return (
         <>
-            <div className="grid grid-rows-3 h-fit w-screen gap-4 min-w-min">
+            <div className="grid grid-rows-3 h-fit w-fit gap-4 min-w-min">
                 <div className="grid grid-row w-fit h-fit">
                         <div className="grid grid-cols-2 md:grid-rows-1 h-fit gap-5" >
                             <div className="grid grid-col-1 md:grid-row-1 h-fit w-fit gap-4">
