@@ -5,10 +5,8 @@ import "./globals.css";
 import { Navbar, SearchHistory, Weather } from './Components';
 import { handleSearchHistory, getSearchHistory } from "./Functions";
 //make a global array for the search history
-var history = ["Köln", "Bonn"];
-var loc = "cologne";
 
-function ComboboxWithAutocomplete() {
+function ComboboxWithAutocomplete({onSearch, onLocation}) {
   var jsFile = require('./weatherData/countries.json');
   const states = JSON.parse(JSON.stringify(jsFile));
 
@@ -48,9 +46,9 @@ function ComboboxWithAutocomplete() {
     onKeyDown={(e) => {
       if (e.key === "Enter") {
         if(value != null && value != "" && staedte.includes(value)){
-          handleSearchHistory(value);
-          loc = value;
-          e.target.value = "";
+          onSearch(value);
+          onLocation(value);
+          setValue("");
         }
       }
     }}
@@ -61,7 +59,12 @@ function ComboboxWithAutocomplete() {
         <div
           key={i}
           className="cursor-pointer hover:bg-gray-200 p-2"
-          onClick={() => onSuggestHandler(suggestion)}
+          onClick={() => {
+            onSuggestHandler(suggestion);
+            onSearch(suggestion);
+            onLocation(suggestion);
+            setValue("");
+          }}
         >
           {suggestion}
         </div>
@@ -74,7 +77,28 @@ function ComboboxWithAutocomplete() {
 }
 
 export default function Home() {
-  const [search, setSearch] = useState([]);
+  const [searchHistory, setSearchHistory] = useState(["Köln", "Bonn"]);
+  const [location, setLocation] = useState("cologne");
+
+  const addToSearchHistory = (value) => {
+    setSearchHistory((prevHistory) => {
+      if (!prevHistory.includes(value)) {
+        return [value, ...prevHistory];
+      }
+      return prevHistory;
+    });
+  };
+
+  const removeFromSearchHistory = (value) => {
+    setSearchHistory((prevHistory) =>
+      prevHistory.filter((item) => item !== value)
+    );
+  };
+
+  const setztLocation = (value) => {
+    setLocation(value);
+  }
+
   return (
     <>
     <div className="relative">
@@ -82,12 +106,12 @@ export default function Home() {
       <Navbar/>
       <div className="flex-1 flex flex-col min-w-min gap-4">
         <div className="flex h-20 min-w-min">
-          <ComboboxWithAutocomplete />
+          <ComboboxWithAutocomplete onSearch={addToSearchHistory} onLocation={setztLocation}/>
         </div>
         <div className="flex-1 gap-2 w-fit ">
           <div className="grid grid-cols-1 md:grid-cols-2  gap-4 h-4/5 w-fit" style={{ position: "absolute", overflowY: "scroll" }}> 
-              <SearchHistory history={history}/>
-              <Weather location={loc}/>
+              <SearchHistory history={searchHistory} remove={removeFromSearchHistory}/>
+              <Weather location={location}/>
           </div>
         </div>
       </div>
