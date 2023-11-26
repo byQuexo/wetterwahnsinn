@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
     return new Response(JSON.stringify(weatherData), {
         headers: {
             'Content-Type': 'application/json',
-            'Allow-Control-Allow-Origin': 'localhost:3000'
+            'Access-Control-Allow-Origin': '*'
         }
     });
 }
