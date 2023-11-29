@@ -9,7 +9,7 @@ export default function searchHistory({ history, remove }) {
       <h1 className="text-2xl font-bold">Search History</h1>
       <div className="flex flex-col gap-2 overflow-y-scroll">
         {history.map((item, index) => (
-          <HistoryItem key={index} name={item} onRemove={remove}/>
+          <HistoryItem key={index} name={item} onRemove={remove}/> 
        ))}
        </div>
     </div>
