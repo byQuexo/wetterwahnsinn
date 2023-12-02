@@ -108,7 +108,7 @@ export default function Home() {
           <ComboboxWithAutocomplete onSearch={addToSearchHistory} onLocation={setztLocation}/>
         </div>
         <div className="flex-1 gap-2 w-fit ">
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 h-4/5 w-fit" style={{ position: "absolute", overflowY: "scroll" }}> 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 w-fit" style={{ position: "absolute", overflowY: "scroll" }}> 
               <SearchHistory history={searchHistory} remove={removeFromSearchHistory}/>
               <Weather location={location}/>
           </div>
