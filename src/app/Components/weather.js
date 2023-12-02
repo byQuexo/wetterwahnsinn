@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getWeather } from "@functions/index.js";
 import "../globals.css";
-import { Forecast } from ".";
+import { Forecast, Placeholder, ForecastDaily } from ".";
 
 export default function WeatherPage({ location }) {
     useEffect(() => {
@@ -19,6 +19,19 @@ export default function WeatherPage({ location }) {
     const [weather, setWeather] = useState("night");
     const [city, setCity] = useState("");
     const [temp, setTemp] = useState("");
+
+    const condition = [
+        {day: "Heute", tempmin: "15", tempmax: "23", icon: "sunny", description: "Sonnig"},
+        {day: "Morgen", tempmin: "16", tempmax: "22", icon: "sunnywithrain", description: "Sonnig mit Regen"},
+        {day: "Übermorgen", tempmin: "17",tempmax: "25", icon: "thunderstorm", description: "Gewitter"},
+    ];
+
+    const conditionsDaily = [
+        {time: "Heute", temp: "15",  icon: "sunny"},
+        {time: "Morgen", temp: "16",  icon: "sunnywithrain"},
+        {time: "Übermorgen", temp: "17", icon: "thunderstorm"},
+    ];
+
     return (
         <>
             <div className="grid grid-rows-3 h-fit w-fit gap-4 min-w-min">
@@ -37,15 +50,16 @@ export default function WeatherPage({ location }) {
                         </div>
                 </div>
                 {/* Placeholder */ }
-                <div className="grid grid-row-2 w-fit h-fit">
-                    <div className="grid gris-cols-2 w-48 h-fit divide-y divide-y-2 divide-solid divide-zinc-800 gap-2 justify-items-center">
-                        <div className="grid grid-col-1 h-fit w-56 md:w-80 lg:w-96" />  
-                        <div className="grid grid-col-2 h-fit w-56 md:w-80 lg:w-96" />
-                    </div>
+                {/* <Placeholder /> */}
+                <div className="grid grid-row-2 h-auto w-full rounded">
+                    <Placeholder />
+                    <ForecastDaily conditions={conditionsDaily}/>
                 </div>
+                {/* <Placeholder /> */}
                 {/* Forecast*/ }
-                <div className="flex-1 flex-row h-auto w-full rounded">
-                    <Forecast />
+                <div className="grid flex-row-3 h-auto w-full rounded">
+                    <Placeholder />
+                    <Forecast condition={condition}/>
                 </div>
             </div>
         </>
