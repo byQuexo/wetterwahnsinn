@@ -5,7 +5,7 @@ import "./globals.css";
 import { Navbar, SearchHistory, Weather } from './Components';
 //make a global array for the search history
 
-function ComboboxWithAutocomplete({onSearch, onLocation}) {
+function ComboboxWithAutocomplete({onSearch, onLocation}) { //TODO: ADD CONMPONENT TO FUNCTION FOLDER
   var jsFile = require('./weatherData/countries.json');
   const states = JSON.parse(JSON.stringify(jsFile));
 
