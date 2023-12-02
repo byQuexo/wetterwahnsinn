@@ -35,7 +35,7 @@ export default function Navbar() {
                         <div className='grid row-span-1 w-auto justify-items-center place-items-end'>
                             <FontAwesomeIcon icon={faXmark} size="lg" height={20} onClick={() => {
                                 setVisability(visability === "hidden" ? "visible" : "hidden");
-                                setVisbar(visBar === "hidden" ? "visible" : "hidden");;
+                                setVisbar(visBar === "hidden" ? "visible" : "hidden");
                             }} style={{ marginBottom: "2rem"}}/></div>
                     </div>
                 </nav>
