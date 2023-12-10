@@ -35,13 +35,13 @@ export default function StatsPage() {
         />
     </div>
     <div className="flex-1 gap-2" >
-        <div className="h-4/5 w-5/6" style={{ overflowY: "scroll" }} > 
-          <h1>Stats der letzten 50 Jahre: {countryn}</h1>
+        <div className="h-4/5 w-5/6" style={{ backgroundColor: "#808080"}}> 
+          <h1 style={{ color: "#000000" }}>Stats der letzten 50 Jahre: {countryn}</h1>
           <LineChart 
           width={1150} 
           height={450} 
           data={data} 
-          margin={{ top: 15, right: 50, bottom: 5, left: 0 }} 
+          margin={{ top: 15, right: 50, bottom: 5, left: 50 }} 
           style={{ backgroundColor: "#f0f0f0", padding: "8px", borderRadius: "12px" }}>
             <Line type="monotone" dataKey="Wärme" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
