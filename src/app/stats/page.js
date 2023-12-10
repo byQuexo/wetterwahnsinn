@@ -3,15 +3,17 @@ import React from "react";
 import {Navbar}  from "../Components";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { getHistoryWeather } from "../Functions";
-//import jsonData from "../vierzigjahreweather.json"
+import jsonData from "../weatherData/vierzigjahreweather";
 
 export default function StatsPage() {
-  const dataW = getHistoryWeather();
-  const data = [{name: '2019', Wärme: 33, pv: 2400, amt: 2400}, 
-  {name: '2020', Wärme: -12, pv: 2400, amt: 2400}, 
-  {name: '2021', Wärme: 10, pv: 2400, amt: 2400}, 
-  {name: '2022', Wärme: 15, pv: 2400, amt: 2400}, 
-  {name: '2023', Wärme: 23, pv: 2400, amt: 2400}];
+  const dataW = jsonData; 
+
+  const data = dataW.Date.map(entry => ({
+    name: entry.Year,
+    Wärme: entry.temp,
+  }));
+
+  const countryn = dataW.country;
 
   return (
     <>
@@ -34,10 +36,10 @@ export default function StatsPage() {
     </div>
     <div className="flex-1 gap-2" >
         <div className="h-4/5 w-5/6" style={{ overflowY: "scroll" }} > 
-          <h1>Stats der letzten 50 Jahre: Deutschland</h1>
+          <h1>Stats der letzten 50 Jahre: {countryn}</h1>
           <LineChart 
           width={1150} 
-          height={500} 
+          height={450} 
           data={data} 
           margin={{ top: 15, right: 50, bottom: 5, left: 0 }} 
           style={{ backgroundColor: "#f0f0f0", padding: "8px", borderRadius: "12px" }}>
