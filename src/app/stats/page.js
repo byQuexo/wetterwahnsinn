@@ -9,7 +9,7 @@ export default function StatsPage() {
   const dataW = jsonData; 
 
   const data = dataW.Date.map(entry => ({
-    name: entry.Year,
+    Jahr: entry.Year,
     Wärme: entry.temp,
   }));
 
@@ -45,7 +45,7 @@ export default function StatsPage() {
           style={{ backgroundColor: "#f0f0f0", padding: "8px", borderRadius: "12px" }}>
             <Line type="monotone" dataKey="Wärme" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="Jahr" />
             <YAxis />
             <Tooltip />
           </LineChart>
