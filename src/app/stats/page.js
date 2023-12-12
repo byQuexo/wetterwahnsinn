@@ -35,7 +35,7 @@ export default function StatsPage() {
         />
     </div>
     <div className="flex-1 gap-2" >
-        <div className="h-4/5 w-5/6" style={{ backgroundColor: "#808080"}}> 
+        <div className="h-4/5 w-5/6" style={{ backgroundColor: "#808080"}} margin ={{top: 5, right: 10, bottom: 5, left:0}}> 
           <h1 style={{ color: "#000000" }}>Stats der letzten 50 Jahre: {countryn}</h1>
           <LineChart 
           width={1150} 
